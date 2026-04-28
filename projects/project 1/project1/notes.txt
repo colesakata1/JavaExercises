@@ -1,0 +1,33 @@
+1. Provide a high-level description (ie, using minimal amount of technical
+   jargon) of the project in no more than 200 words.
+The goal of this project is to code a percolation simulator that can construct an n*n grid
+of squares, and simulate the location of 'fluid' within the grid. The point is to tell if the
+fluid has flowed, or percolated to the bottom of the grid. By default, all squares are
+blocked. There is a simulated source at the top, and we use two different techniques to keep
+track of open squares that are connected to the top by other open squares orthogonally. Firstly,
+we use an 2-dimensional array to keep track of open squares, and then a recursive flood fill
+algorithm to determine full squares. Flood fill works by filling the site, then checking the
+orthogonal neighbor squares for open squares, and filling them as well. The second technique
+used to simulate this scenario is a weighted quick-union union find. This is a data structure
+imported from dsa that has groups of elements that can be linked together. Each element
+begins in its own group, and we put two elements in the same group by 'union'-ing them. We keep
+an artificial element representing the source at the top and the sink at the bottom. All open
+squares that are neighbors are placed in their own union. When a square is filled, all of its
+open neighbors are recursively filled as well. This causes a backwash problem. Since we assume
+all open squares on the bottom row are connected to the sink, we can simulate fluid comes back
+from the sink and fills squares that would not otherwise be filled. This can be remedied by
+using another WQUUF without artificial squares to keep track of sites actually connected to the top.
+
+2. Did you receive help from anyone? List their names, status (classmate, 
+   CS210 grad, TA, other), and the nature of help received.
+
+   Name               Status       Help Received
+   ----               ------       -------------
+
+   ...                ...          ...
+
+3. List any other comments here. Feel free to provide any feedback on how
+   much you learned from doing the assignment, and whether you enjoyed
+   doing it.
+
+   ...
